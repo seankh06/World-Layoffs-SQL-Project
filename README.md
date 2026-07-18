@@ -99,32 +99,27 @@ Business questions answered:
 ## Project Structure
 
 ```text
-world-layoffs-sql-project
+World-Layoffs-SQL-Project
 │
-├── data/
-│   └── layoffs.csv
-│
-├── sql/
-│   ├── 01_import_data.sql
-│   ├── 02_data_cleaning.sql
-│   └── 03_exploratory_data_analysis.sql
-│
+├── 01_import_data.sql
+├── 02_data_cleaning.sql
+├── 03_exploratory_data_analysis.sql
 └── README.md
 ```
 
-## Folder Description
+## File Description
 
-- `data/`
-  - Contains the original layoffs dataset (`layoffs.csv`).
- 
-- `sql/01_import_data.sql`
-  - SQL script used to create the table and import the CSV dataset into MySQL.
+- `01_import_data.sql`
+  - Creates the `layoffs` table and imports the dataset into MySQL.
 
-- `sql/02_data_cleaning.sql`
-  - SQL script used to clean and prepare the raw dataset.
+- `02_data_cleaning.sql`
+  - Removes duplicates, standardizes values, handles NULLs, and prepares the dataset for analysis.
 
-- `sql/03_exploratory_data_analysis.sql`
-  - SQL script used to perform exploratory data analysis and answer business questions.
+- `03_exploratory_data_analysis.sql`
+  - Performs exploratory data analysis and answers key business questions related to global layoffs.
+
+- `README.md`
+  - Provides project documentation, business questions, key findings, and repository information.
 
 ---
 
