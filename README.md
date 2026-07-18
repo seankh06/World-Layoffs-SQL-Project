@@ -101,6 +101,7 @@ Business questions answered:
 ```text
 World-Layoffs-SQL-Project
 │
+├── layoffs.csv
 ├── 01_import_data.sql
 ├── 02_data_cleaning.sql
 ├── 03_exploratory_data_analysis.sql
@@ -109,6 +110,9 @@ World-Layoffs-SQL-Project
 
 ## File Description
 
+- `layoffs.csv`
+  - Original dataset containing global layoff records from 2020 to 2023.
+    
 - `01_import_data.sql`
   - Creates the `layoffs` table and imports the dataset into MySQL.
 
