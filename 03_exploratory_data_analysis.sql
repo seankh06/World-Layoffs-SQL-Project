@@ -106,6 +106,37 @@ SELECT *
 FROM Company_Year_Rank
 WHERE ranking <= 5;
 
+-- ===========================================
+-- 7. Funding Efficiency Analysis
+-- ===========================================
+-- Excludes Post-IPO/Acquired/Unknown since "funds_raised_millions" doesn't
+-- reflect real venture funding for those; floor avoids divide-by-small-number distortion.
+
+SELECT company, industry, stage, total_laid_off, funds_raised_millions,
+       ROUND(total_laid_off / NULLIF(funds_raised_millions, 0), 2) AS layoffs_per_million_raised
+FROM layoffs_staging2
+WHERE total_laid_off IS NOT NULL
+  AND funds_raised_millions >= 50
+  AND stage NOT IN ('Post-IPO', 'Acquired', 'Unknown')
+ORDER BY layoffs_per_million_raised DESC
+LIMIT 15;
+
+-- ===========================================
+-- 8. Funding Efficiency by Stage (controls for sample size)
+-- ===========================================
+SELECT stage,
+       COUNT(*) AS num_companies,
+       ROUND(AVG(total_laid_off / NULLIF(funds_raised_millions, 0)), 2) AS avg_layoffs_per_million
+FROM layoffs_staging2
+WHERE total_laid_off IS NOT NULL
+  AND funds_raised_millions >= 50
+  AND stage NOT IN ('Post-IPO', 'Acquired', 'Unknown')
+GROUP BY stage
+ORDER BY avg_layoffs_per_million DESC;
+
+
+
+
 
 
 
